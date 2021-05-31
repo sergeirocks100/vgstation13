@@ -1998,6 +1998,20 @@ mob/living/carbon/human/isincrit()
 			remove_confused(rand(8, 10))
 			drowsyness = max(0, drowsyness-rand(8,10))
 			pain_shock_stage = max(0, pain_shock_stage-rand(3,5))
+	if(muted_letters && muted_letters.len && length(speech.message) == 1)
+		if(speech.message in muteletters_check)
+			muted_letters.Remove(speech.message)
+		else if(muteletter_tries)
+			muteletter_tries--
+			visible_message("<span class='warning'>Letter not found. [muteletter_tries] tries left.</span>")
+		else
+			set_muted_letters(min(0,26-(muted_letters.len+1)))
+
+/mob/living/carbon/human/proc/set_muted_letters(var/keep_amount)
+	muteletter_tries = 3
+	muted_letters = list("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z")
+	for(var/i = 0, i < keep_amount, i++)
+		pick_n_take(muted_letters)
 
 /mob/living/carbon/human/can_be_infected()
 	return 1
