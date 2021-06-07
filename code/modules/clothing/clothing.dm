@@ -599,6 +599,8 @@
 	species_restricted = list("exclude","Muton")
 	var/has_sensor = 1 //For the crew computer 2 = unable to change mode
 	var/sensor_mode = 0
+	var/can_adjust = 1
+	var/adjusted = 0
 		/*
 		1 = Report living/dead
 		2 = Report detailed damages
@@ -679,6 +681,27 @@ var/list/jersey_numbers = list()
 			if(3)
 				to_chat(user, "<span class='notice'>The suit sensors will now report the wearer's vital lifesigns as well as their coordinate position.</span>")
 	return switchMode
+
+/obj/item/clothing/under/verb/rolldown()
+	set name = "Adjust Jumpsuit Style"
+	set category = "Object"
+	set src in usr
+	if(usr.stat)
+		return
+	if(!can_adjust)
+		usr << "You cannot wear this suit any differently."
+		return
+	if(src.adjusted == 1)
+		src.item_color = initial(item_color)
+		src.item_color = src.suit_color //colored jumpsuits are shit and break without this
+		usr << "You adjust the suit back to normal."
+		src.adjusted = 0
+	else
+		src.item_color += "_d"
+		usr << "You adjust the suit to wear it more casually."
+		src.adjusted = 1
+	usr.update_inv_w_uniform()
+	..()
 
 /obj/item/clothing/under/verb/toggle()
 	set name = "Toggle Suit Sensors"
