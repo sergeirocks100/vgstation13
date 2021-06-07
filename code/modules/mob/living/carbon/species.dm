@@ -735,7 +735,7 @@ var/global/list/whitelisted_species = list("Human")
 	..()
 	H.default_gib()
 
-/* /datum/species/vox
+/datum/species/vox
 	name = "Vox"
 	icobase = 'icons/mob/human_races/vox/r_vox.dmi'
 	deform = 'icons/mob/human_races/vox/r_def_vox.dmi'
@@ -844,7 +844,7 @@ var/global/list/whitelisted_species = list("Human")
 
 /datum/species/vox/gib(mob/living/carbon/human/H)
 	..()
-	H.default_gib() */
+	H.default_gib()
 
 /datum/species/diona
 	name = "Diona"
