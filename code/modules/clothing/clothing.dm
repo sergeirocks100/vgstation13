@@ -337,7 +337,7 @@
 	body_parts_covered = HANDS
 	slot_flags = SLOT_GLOVES
 	attack_verb = list("challenges")
-	species_restricted = list("exclude","Unathi","Tajaran","Muton")
+	species_restricted = list("exclude","Tajaran","Muton")
 	var/pickpocket = 0 //Master pickpocket?
 
 	var/bonus_knockout = 0 //Knockout chance is multiplied by (1 + bonus_knockout) and is capped at 1/2. 0 = 1/12 chance, 1 = 1/6 chance, 2 = 1/4 chance, 3 = 1/3 chance, etc.
@@ -479,7 +479,7 @@
 	permeability_coefficient = 0.50
 	sterility = 50
 
-	species_restricted = list("exclude","Unathi","Tajaran","Muton")
+	species_restricted = list("exclude","Tajaran","Muton")
 	var/step_sound = ""
 	var/stepstaken = 1
 	var/modulo_steps = 2 //if stepstaken is a multiplier of modulo_steps, play the sound. Does not work if modulo_steps < 1
